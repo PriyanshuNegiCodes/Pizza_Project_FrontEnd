@@ -14,7 +14,16 @@ export class MenuComponent implements OnInit {
 
   menuList:Orders|any;
 
-  finalOrder:FinalOrder|any
+  finalOrder: FinalOrder = {
+    email: '',
+    phoneNumber: 0,
+    address: '',
+    restaurantName: '',
+    restaurantAddress: '',
+    list: [],
+    grandTotal: 0
+  }
+
 
   constructor(private services:MenuserviceService){}
   ngOnInit() {
@@ -31,10 +40,10 @@ export class MenuComponent implements OnInit {
 
   orderNow(){
 
-  
-    this.finalOrder.email = localStorage.getItem("email");;
-    this.finalOrder.phoneNumber = localStorage.getItem("phoneNumber");
-    this.finalOrder.address= localStorage.getItem("address");;
+    this.finalOrder.email = localStorage.getItem("email") || '';
+    this.finalOrder.phoneNumber = parseInt(localStorage.getItem("phoneNumber") || '0'); 
+    this.finalOrder.address = localStorage.getItem("address") || ''; 
+    
     this.finalOrder.restaurantName=this.menuList.restaurantName;
     this.finalOrder.restaurantAddress=this.menuList.restaurantAddress;
     this.finalOrder.grandTotal = this.finalOrder.list.reduce((total:any, item:any) => total + item.price, 0);
