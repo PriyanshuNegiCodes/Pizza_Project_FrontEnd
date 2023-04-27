@@ -18,6 +18,7 @@ import { FormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 import { LoginComponent } from './login/login.component';
 import { MenuComponent } from './menu/menu.component';
@@ -48,7 +49,8 @@ import { RegisterComponent } from './register/register.component';
     FormsModule,
     MatCheckboxModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatExpansionModule
 
   ],
   providers: [],

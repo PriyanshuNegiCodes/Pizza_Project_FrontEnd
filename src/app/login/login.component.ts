@@ -25,6 +25,11 @@ export class LoginComponent {
       console.log(response);
       this.responsedata=response;
       localStorage.setItem("jwt", this.responsedata.Token);
+      localStorage.setItem("email",this.responsedata.email);
+      localStorage.setItem("name",this.responsedata.name);
+      localStorage.setItem("address",this.responsedata.address);
+      localStorage.setItem("phoneNumber", this.responsedata.phoneNumber);
+
       console.log(localStorage.getItem("jwt"));
 
     }, error=> alert(error))
