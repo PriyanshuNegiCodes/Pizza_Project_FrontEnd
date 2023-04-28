@@ -1,0 +1,52 @@
+mat-card{
+    width: 70vw;
+    margin-left: 10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.food-item-header {
+    display: flex;
+    padding: 10px;
+    font-weight: bold;
+    border-bottom: 1px solid gray;
+  }
+  .food-item-header span{
+    margin-right: 125px;
+  }
+  
+.food-item {
+    padding: 10px;
+    border-bottom: 1px solid gray;
+  }
+  
+  .food-item:last-child {
+    border-bottom: none;
+  }
+  
+  .food-item span {
+    display: inline-block;
+    width: 22%;
+    font-size: 14px;
+    font-weight: 500;
+   
+  }
+  
+  .food-item input[type="number"] {
+    width: 60px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    margin-right: 10px;
+  }
+  .food-item-total{
+    text-align: center;
+  }
+  .grandTotal{
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+  }
+  .grandTotal button{
+    padding: 8px;
+    margin:12px;
+  }

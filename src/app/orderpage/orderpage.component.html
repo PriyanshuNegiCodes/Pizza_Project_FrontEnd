@@ -1,1 +1,22 @@
-<p>orderpage works!</p>
+<mat-card>
+    <mat-card-content>
+        <div class="food-item-header">
+            <span>Category</span>
+            <span>Name</span>
+            <span>Price</span>
+            <span>Quantity</span>
+            <span>Total</span>
+          </div>
+      <div class="food-item" *ngFor="let data of finalBill.list">
+        <span>{{ data.category }}</span>
+        <span>{{ data.name }}</span>
+        <span>{{ data.price }}</span>
+        <input type="number" [(ngModel)]="data.quantity">
+        <span class="food-item-total">{{ total(data) }}</span>
+      </div>
+      <div class="grandTotal">
+        <button  mat-raised-button color="warn"> <span style="font-size: 16px; 
+            font-weight: 600;">Place Order=> Grand Total: $</span> {{calculateGrandTotal(finalBill.grandTotal)}}</button>
+      </div>
+    </mat-card-content>
+</mat-card>

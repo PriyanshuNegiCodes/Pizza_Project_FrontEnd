@@ -58,7 +58,6 @@ export class MenuComponent implements OnInit {
   }
 
   orderNow(){
-    console.log("000000000000000000000000000000000000000000000000000000000");
     //alert(JSON.stringify(this.finalOrder))
     this.routing.navigate(['/order'], { state: { finalOrder: this.finalOrder } });
   }

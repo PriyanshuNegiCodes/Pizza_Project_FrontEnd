@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FinalOrder } from 'src/assets/orderDetails';
+import { BillDetails, FoodList } from 'src/assets/BillingDetails';
 @Component({
   selector: 'app-orderpage',
   templateUrl: './orderpage.component.html',
@@ -8,7 +9,7 @@ import { FinalOrder } from 'src/assets/orderDetails';
 })
 export class OrderpageComponent implements OnInit{
 
-  finalOrder: FinalOrder = {
+  finalBill: BillDetails = {
     email: '',
     phoneNumber: 0,
     address: '',
@@ -21,6 +22,31 @@ export class OrderpageComponent implements OnInit{
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.finalOrder = history.state.finalOrder;
+    const state = history.state;
+  
+    this.finalBill.email = state.finalOrder.email;
+    this.finalBill.phoneNumber = state.finalOrder.phoneNumber;
+    this.finalBill.address = state.finalOrder.address;
+    this.finalBill.restaurantName = state.finalOrder.restaurantName;
+    this.finalBill.restaurantAddress = state.finalOrder.restaurantAddress;
+    console.log(state.finalOrder.list[0].category)
+    console.log(state.finalOrder.list[0].price)
+    console.log(state.finalOrder.list[0].name)
+    for(let i=0; i<state.finalOrder.list.length; i++){
+      const foodItem: FoodList = {
+        category: state.finalOrder.list[i].category,
+        price: state.finalOrder.list[i].price,
+        name: state.finalOrder.list[i].name,
+        quantity: 1 
+      };
+      this.finalBill.list.push(foodItem);
+    }
+    this.finalBill.grandTotal = state.finalOrder.grandTotal;
   }
+  total(foodItem: FoodList): number {
+    return foodItem.price * foodItem.quantity;
+  }
+  calculateGrandTotal(finalBill:any) {
+   return this.finalBill.grandTotal = this.finalBill.list.reduce((total, item) => total + (item.price * item.quantity), 0);
+  }  
 }
