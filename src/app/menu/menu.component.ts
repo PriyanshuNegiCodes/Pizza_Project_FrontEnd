@@ -36,17 +36,31 @@ export class MenuComponent implements OnInit {
       error=>{alert("error fetching Response: "+`${error}`)}
     )
   }
+
+  getRestaurantName:any;
+  getRestaurantAddress:any;
+
+  // ----------------------------------------Methods for data transfer---------------------------------------
+  restaurantDetails(data:any){
+    this.getRestaurantName=data.restaurantName;
+    this.getRestaurantAddress=data.restaurantAddress;
+  }
+
   addFoodInformation(data:any){
     this.finalOrder.list.push(data);
     
-  
+    console.log("---------------------------------------------")
+
     this.finalOrder.email = localStorage.getItem("email") || '';
     this.finalOrder.phoneNumber = parseInt(localStorage.getItem("phoneNumber") || '0'); 
-    this.finalOrder.address = localStorage.getItem("address") || ''; 
+    this.finalOrder.address = localStorage.getItem("address") || '';  
     
-    this.finalOrder.restaurantName=this.menuList.restaurantName;
-    this.finalOrder.restaurantAddress=this.menuList.restaurantAddress;
-    // this.finalOrder.grandTotal = this.finalOrder.list.reduce((total:any, item:any) => total + item.price, 0);
+    console.log(this.getRestaurantName)
+    console.log(this.getRestaurantAddress)
+
+    this.finalOrder.restaurantName=this.getRestaurantName;
+    this.finalOrder.restaurantAddress=this.getRestaurantAddress;
+    console.log("---------------------------------------------")
 
   }
 

@@ -17,7 +17,7 @@ export class LoginComponent {
   ngOnInit() {
     this.loginForm = new FormGroup({
       email: new FormControl('', Validators.required),
-      phoneNumber: new FormControl('', Validators.required)
+      password: new FormControl('', Validators.required)
     });
   }
 
@@ -31,16 +31,19 @@ export class LoginComponent {
       localStorage.setItem("email",this.responsedata.email);
       localStorage.setItem("name",this.responsedata.name);
       localStorage.setItem("address",this.responsedata.address);
-      localStorage.setItem("phoneNumber", this.responsedata.phoneNumber);
+      localStorage.setItem("phoneNumber", this.responsedata.phone);
+
+      console.log("_________________________________________")
+        console.log(localStorage.getItem("phoneNumber"))
+      console.log("_________________________________________")
+
 
       if(localStorage.getItem("jwt")!=""){
         this.authService.loggedIn();
         this.openSnackBar("SuccessFully Logged In", "Ok")
-        alert("after login"+this.authService.getLogggingStatus())
       }else{
         this.authService.loggedOut();
         this.openSnackBar("invalid login details", "Ok")
-        alert("after error"+this.authService.getLogggingStatus())
       }
 
     }, error=> alert(error))
@@ -56,7 +59,7 @@ export class LoginComponent {
     this.authService.loggedOut();
     this.loginForm.reset();
     this.openSnackBar("SuccessFully Logged Out", "Ok")
-    alert("after logout"+this.authService.getLogggingStatus())
+
   }
 
   openSnackBar(message: string, action: string) {
