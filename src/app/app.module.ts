@@ -23,6 +23,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { LoginComponent } from './login/login.component';
 import { MenuComponent } from './menu/menu.component';
 import { RegisterComponent } from './register/register.component';
+import { OrderpageComponent } from './orderpage/orderpage.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { RegisterComponent } from './register/register.component';
     LoginComponent,
     MenuComponent,
     RegisterComponent,
+    OrderpageComponent,
     
   ],
   imports: [

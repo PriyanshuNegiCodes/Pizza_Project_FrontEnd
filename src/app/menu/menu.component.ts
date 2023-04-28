@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Orders } from 'src/assets/menu';
 import { MenuserviceService } from '../services/menuservice.service';
 import { FinalOrder } from 'src/assets/orderDetails';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -25,10 +27,10 @@ export class MenuComponent implements OnInit {
   }
 
 
-  constructor(private services:MenuserviceService){}
+  constructor(private services:MenuserviceService, private routing: Router){}
   ngOnInit() {
     return this.services.getMenu().subscribe(
-      response=> {console.log(response)
+      response=> {
       this.menuList=response;
       },
       error=>{alert("error fetching Response: "+`${error}`)}
@@ -36,9 +38,14 @@ export class MenuComponent implements OnInit {
   }
   addFoodInformation(data:any){
     this.finalOrder.list.push(data);
-  }
+    
+    console.log("--------------------------------------")
+    console.log(localStorage.getItem("email"))
+    console.log(localStorage.getItem("address"))
+    let val = localStorage.getItem("phoneNumber")?.toString() || '';
+    console.log(val)
+    console.log("--------------------------------------")
 
-  orderNow(){
 
     this.finalOrder.email = localStorage.getItem("email") || '';
     this.finalOrder.phoneNumber = parseInt(localStorage.getItem("phoneNumber") || '0'); 
@@ -46,8 +53,13 @@ export class MenuComponent implements OnInit {
     
     this.finalOrder.restaurantName=this.menuList.restaurantName;
     this.finalOrder.restaurantAddress=this.menuList.restaurantAddress;
-    this.finalOrder.grandTotal = this.finalOrder.list.reduce((total:any, item:any) => total + item.price, 0);
+    // this.finalOrder.grandTotal = this.finalOrder.list.reduce((total:any, item:any) => total + item.price, 0);
 
-    console.log(this.finalOrder);
+  }
+
+  orderNow(){
+    console.log("000000000000000000000000000000000000000000000000000000000");
+    //alert(JSON.stringify(this.finalOrder))
+    this.routing.navigate(['/order'], { state: { finalOrder: this.finalOrder } });
   }
 }

@@ -21,11 +21,12 @@
                 <mat-card-actions>
                   <h2>${{data.price}}</h2>
                   <button mat-button (click)="addFoodInformation(data)">Add</button>
-                  <button mat-button (click)="orderNow()">Order Now</button>
-
                 </mat-card-actions>
               </mat-card>
           </div>
+    
+          <button class="orderButton" mat-raised-button color="warn" (click)="orderNow()" >Order Now</button>
+
   <!--  -->
         </mat-expansion-panel>
       </mat-accordion>
