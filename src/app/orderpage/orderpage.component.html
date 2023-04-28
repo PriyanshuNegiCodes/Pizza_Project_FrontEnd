@@ -15,7 +15,7 @@
         <span class="food-item-total">{{ total(data) }}</span>
       </div>
       <div class="grandTotal">
-        <button  mat-raised-button color="warn"> <span style="font-size: 16px; 
+        <button  mat-raised-button color="warn" (click)="placeOrder()"  > <span style="font-size: 16px; 
             font-weight: 600;">Place Order=> Grand Total: $</span> {{calculateGrandTotal(finalBill.grandTotal)}}</button>
       </div>
     </mat-card-content>

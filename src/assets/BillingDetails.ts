@@ -14,3 +14,4 @@ export interface FoodList {
     price: number;
     quantity: number;
   }
+  

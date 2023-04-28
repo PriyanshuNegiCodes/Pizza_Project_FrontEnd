@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginserviceService } from '../services/loginservice.service';
+import { AuthenticationserviceService } from '../services/authenticationservice.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,7 +12,7 @@ import { LoginserviceService } from '../services/loginservice.service';
 export class LoginComponent {
   loginForm:any|FormGroup;
 
-  constructor(private login: LoginserviceService) { }
+  constructor(private login: LoginserviceService, private authService:AuthenticationserviceService,private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -33,6 +36,22 @@ export class LoginComponent {
       console.log(localStorage.getItem("jwt"));
 
     }, error=> alert(error))
+    
+    if(localStorage.getItem("jwt")!=""){
+      this.authService.loggedIn();
+      this.openSnackBar("SuccessFully Logged In", "Ok")
+    }else{
+      this.authService.loggedOut();
+      this.openSnackBar("invalid login details", "Ok")
+    }
+  }
+  logout(){
+    this.authService.loggedOut();
     this.loginForm.reset();
+    this.openSnackBar("SuccessFully Logged Out", "Ok")
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
   }
 }

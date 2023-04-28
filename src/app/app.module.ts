@@ -24,6 +24,7 @@ import { LoginComponent } from './login/login.component';
 import { MenuComponent } from './menu/menu.component';
 import { RegisterComponent } from './register/register.component';
 import { OrderpageComponent } from './orderpage/orderpage.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { OrderpageComponent } from './orderpage/orderpage.component';
     MatCheckboxModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSnackBarModule
 
   ],
   providers: [],

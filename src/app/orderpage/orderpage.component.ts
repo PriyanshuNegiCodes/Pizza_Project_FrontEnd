@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FinalOrder } from 'src/assets/orderDetails';
 import { BillDetails, FoodList } from 'src/assets/BillingDetails';
+import { FinalBillingService } from '../services/final-billing.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-orderpage',
   templateUrl: './orderpage.component.html',
@@ -19,7 +21,7 @@ export class OrderpageComponent implements OnInit{
     grandTotal: 0
   }
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private billing:FinalBillingService, private _snackBar: MatSnackBar,) { }
 
   ngOnInit() {
     const state = history.state;
@@ -48,5 +50,18 @@ export class OrderpageComponent implements OnInit{
   }
   calculateGrandTotal(finalBill:any) {
    return this.finalBill.grandTotal = this.finalBill.list.reduce((total, item) => total + (item.price * item.quantity), 0);
-  }  
+  } 
+  
+  placeOrder(){
+    console.log(this.finalBill);
+    this.billing.addBillingDetails(this.finalBill).subscribe(
+      response=>{
+        console.log(response);
+      },
+      error=> {
+        console.log(error);
+      }
+
+    );
+  }
 }
