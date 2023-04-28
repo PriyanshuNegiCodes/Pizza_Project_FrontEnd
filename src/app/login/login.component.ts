@@ -33,22 +33,30 @@ export class LoginComponent {
       localStorage.setItem("address",this.responsedata.address);
       localStorage.setItem("phoneNumber", this.responsedata.phoneNumber);
 
-      console.log(localStorage.getItem("jwt"));
+      if(localStorage.getItem("jwt")!=""){
+        this.authService.loggedIn();
+        this.openSnackBar("SuccessFully Logged In", "Ok")
+        alert("after login"+this.authService.getLogggingStatus())
+      }else{
+        this.authService.loggedOut();
+        this.openSnackBar("invalid login details", "Ok")
+        alert("after error"+this.authService.getLogggingStatus())
+      }
 
     }, error=> alert(error))
     
-    if(localStorage.getItem("jwt")!=""){
-      this.authService.loggedIn();
-      this.openSnackBar("SuccessFully Logged In", "Ok")
-    }else{
-      this.authService.loggedOut();
-      this.openSnackBar("invalid login details", "Ok")
-    }
   }
   logout(){
+    localStorage.removeItem("jwt");
+    localStorage.removeItem("email");
+    localStorage.removeItem("name");
+    localStorage.removeItem("address");
+    localStorage.removeItem("phoneNumber");
+
     this.authService.loggedOut();
     this.loginForm.reset();
     this.openSnackBar("SuccessFully Logged Out", "Ok")
+    alert("after logout"+this.authService.getLogggingStatus())
   }
 
   openSnackBar(message: string, action: string) {

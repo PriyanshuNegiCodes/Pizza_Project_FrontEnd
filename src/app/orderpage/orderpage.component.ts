@@ -4,6 +4,7 @@ import { FinalOrder } from 'src/assets/orderDetails';
 import { BillDetails, FoodList } from 'src/assets/BillingDetails';
 import { FinalBillingService } from '../services/final-billing.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-orderpage',
   templateUrl: './orderpage.component.html',
@@ -21,9 +22,10 @@ export class OrderpageComponent implements OnInit{
     grandTotal: 0
   }
 
-  constructor(private route: ActivatedRoute, private billing:FinalBillingService, private _snackBar: MatSnackBar,) { }
+  constructor(private route: ActivatedRoute, private billing:FinalBillingService, private _snackBar: MatSnackBar, private routing: Router) { }
 
   ngOnInit() {
+
     const state = history.state;
   
     this.finalBill.email = state.finalOrder.email;
@@ -63,5 +65,11 @@ export class OrderpageComponent implements OnInit{
       }
 
     );
+    this.openSnackBar("Order Place Successfully", "Ok")
+  }
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
+    this.finalBill.list=[];
+    this.routing.navigate(['/menuComponent'] );
   }
 }

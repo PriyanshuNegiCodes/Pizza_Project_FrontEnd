@@ -39,14 +39,7 @@ export class MenuComponent implements OnInit {
   addFoodInformation(data:any){
     this.finalOrder.list.push(data);
     
-    console.log("--------------------------------------")
-    console.log(localStorage.getItem("email"))
-    console.log(localStorage.getItem("address"))
-    let val = localStorage.getItem("phoneNumber")?.toString() || '';
-    console.log(val)
-    console.log("--------------------------------------")
-
-
+  
     this.finalOrder.email = localStorage.getItem("email") || '';
     this.finalOrder.phoneNumber = parseInt(localStorage.getItem("phoneNumber") || '0'); 
     this.finalOrder.address = localStorage.getItem("address") || ''; 
