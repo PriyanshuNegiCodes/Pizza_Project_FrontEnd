@@ -19,14 +19,13 @@ export class CustomValidators{
     //     return valid ? null : { EmailError: true };
     //   }
    
-    static contactCheck(phoneNumber:FormControl){
-        let contact:any=phoneNumber.value;
-    
-        if(contact.length==10 && (contact.startsWith(7)||contact.startsWith(8)||contact.startsWith(9))){
-            return null;
-        }else{
-            return {contactError:true}
+    static contactCheck(control: FormControl) {
+        const contact: string = control.value;
+        if (contact && contact.length === 10) {
+          return null;
+        } else {
+          return { contactError: true };
         }
-    }
+      }
 
 }   
