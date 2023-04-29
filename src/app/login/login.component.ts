@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginserviceService } from '../services/loginservice.service';
-import { AuthenticationserviceService } from '../services/authenticationservice.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { AuthnticationService } from '../services/authntication.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   loginForm:any|FormGroup;
 
-  constructor(private router:Router ,private login: LoginserviceService, private authService:AuthenticationserviceService,private _snackBar: MatSnackBar) { }
+  constructor(private router:Router ,private login: LoginserviceService, private _snackBar: MatSnackBar, private authService: AuthnticationService) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
