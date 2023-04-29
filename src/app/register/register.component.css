@@ -23,3 +23,8 @@ mat-card{
     display: flex;
     flex-direction: column;
   }
+
+  .errorCSS{
+    color:rgb(255, 64, 0); 
+    font-size: 10px;
+  }
