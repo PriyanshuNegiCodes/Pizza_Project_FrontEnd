@@ -15,16 +15,19 @@ export class RegisterComponent {
     , private matSnackBar:MatSnackBar, private routing: Router
     ) { }
 
-  registerForm = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
-    phoneNumber: ['', [Validators.required, CustomValidators.contactCheck]],
-    password: ['' ,[Validators.required]],
-    Cpassword: ['', Validators.required],
-    name:['', Validators.required],
-    address: ['', Validators.required]
-  }, {
-    validators: [CustomValidators.passwordMatchValidator]
-  });
+    phonePattern = /^[7-9]\d{9}$/;
+
+    registerForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      phoneNumber: ['', [Validators.required, Validators.pattern(this.phonePattern)]],
+      password: ['' ,[Validators.required]],
+      Cpassword: ['', Validators.required],
+      name:['', Validators.required],
+      address: ['', Validators.required]
+    }, {
+      validators: [CustomValidators.passwordMatchValidator]
+    });
+  
   
 
   // ________________Code toe get the validations from form build___________________________________________
