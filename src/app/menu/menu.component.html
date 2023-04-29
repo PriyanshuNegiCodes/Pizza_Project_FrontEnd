@@ -1,8 +1,13 @@
-<div class="restaurant-data" *ngFor="let restaurantName of menuList">
-    <mat-accordion>
+<div class="restaurant-data" *ngFor="let restaurantName of menuList; let i = index">
+  <mat-accordion (mouseleave)="leaveAlert()">
  
-        <mat-expansion-panel (opened)="panelOpenState = true"
-                             (closed)="panelOpenState = false">
+        <mat-expansion-panel 
+        (opened)="panelOpenState = true" 
+        (closed)="panelOpenState = false" 
+        [expanded]="isPanelOpen(i)"
+        (mouseenter)="onMouseEnter(i)"
+        (mouseleave)="onMouseLeave()"
+                             >
           <mat-expansion-panel-header>
             <mat-panel-title>
              {{restaurantName.restaurantName}}

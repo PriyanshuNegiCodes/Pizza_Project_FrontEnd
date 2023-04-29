@@ -3,6 +3,7 @@ import { Orders } from 'src/assets/menu';
 import { MenuserviceService } from '../services/menuservice.service';
 import { FinalOrder } from 'src/assets/orderDetails';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-menu',
@@ -12,7 +13,6 @@ import { Router } from '@angular/router';
 export class MenuComponent implements OnInit {
 
   panelOpenState = false;
-
 
   menuList:Orders|any;
 
@@ -27,7 +27,7 @@ export class MenuComponent implements OnInit {
   }
 
 
-  constructor(private services:MenuserviceService, private routing: Router){}
+  constructor(private services:MenuserviceService, private routing: Router, private matSnackBar: MatSnackBar){}
   ngOnInit() {
     return this.services.getMenu().subscribe(
       response=> {
@@ -61,4 +61,31 @@ export class MenuComponent implements OnInit {
   orderNow(){
     this.routing.navigate(['/order'], { state: { finalOrder: this.finalOrder } });
   }
+
+
+  // --------------------Code to order from one restaurant only---------------------------
+  
+  hoveredIndex = -1;
+
+  leaveAlert(){
+    this.openSnackBar("You Can Only Order From One Restaurant at a Time", "Ok");
+    }
+    
+    onMouseEnter(index: number) {
+    this.hoveredIndex = index;
+    }
+    
+    onMouseLeave() {
+    this.hoveredIndex = -1;
+    }
+    
+    isPanelOpen(index: number): boolean {
+    return this.panelOpenState && this.hoveredIndex === index;
+    }
+
+    // -------------------------------This is the snack bar-------------------------------------------------
+   
+    openSnackBar(message: string, action: string) {
+      this.matSnackBar.open(message, action);
+      }
 }
