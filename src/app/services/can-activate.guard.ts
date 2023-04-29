@@ -10,8 +10,7 @@ export class CanActivateGuard implements CanActivate {
   constructor(private service:AuthnticationService){}
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      alert(this.service.getLoggingStatus());
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {;
       return this.service.getLoggingStatus();
   }
   

@@ -1,4 +1,4 @@
-<div *ngFor="let restaurantName of menuList">
+<div class="restaurant-data" *ngFor="let restaurantName of menuList">
     <mat-accordion>
  
         <mat-expansion-panel (opened)="panelOpenState = true"
@@ -15,12 +15,23 @@
           <div class="foodList">
             <mat-card class="example-card" *ngFor="let data of restaurantName.foodItemsList">
                 <mat-card-header>
-                  <mat-card-subtitle>{{data.category}}:{{data.name}}</mat-card-subtitle>
+                  <mat-card-subtitle>{{data.category}}</mat-card-subtitle>
                 </mat-card-header>
                 <img mat-card-image src="../../assets/{{data.name}}.jpg" alt="Photo of a Shiba Inu">
+                <div class="food-Name">{{data.name}}</div>
                 <mat-card-actions>
-                  <h2>${{data.price}}</h2>
-                  <button mat-button (click)=" restaurantDetails(restaurantName); addFoodInformation(data)">Add</button>
+                  <div class="food-Price">
+                    <h2>$</h2>
+                    <p>{{data.price}}</p>
+                  </div>
+                  <div class="example-button-container">
+                    <button mat-mini-fab 
+                    (click)=" restaurantDetails(restaurantName); addFoodInformation(data)"
+                    color="warn" aria-label="Example icon button with a plus one icon">
+                      <mat-icon>plus_one</mat-icon>
+                    </button>
+                  </div>
+              
                 </mat-card-actions>
               </mat-card>
           </div>

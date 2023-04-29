@@ -9,7 +9,6 @@ export class AuthnticationService {
   loggingStatus=false;
   loggedIn(){
     this.loggingStatus=true;
-    alert(this.loggingStatus)
   }
   loggedOut(){
     this.loggingStatus=false;

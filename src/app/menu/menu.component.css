@@ -1,63 +1,94 @@
-div{
-    margin-top: 5%;
-    margin-bottom: 10%;
+.restaurant-data {
+  margin-top: 5%;
+  margin-bottom: 10%;
+  display: flex;
+  justify-content: center;
 }
 
-.mat-mdc-form-field + .mat-mdc-form-field {
-    margin-left: 8px;
-  }
+.mat-expansion-panel {
+  width: 70vw;
+  margin: 5% auto;
+}
 
-  mat-accordion{
-    margin: auto;   
+.example-card {
+  max-width: 350px;
+  width: 20vw;
+  /* margin: 0 33px 0 30px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);;
+}
 
-  }
-  mat-expansion-panel{
-    width: 70vw;
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-top: 5%;
-  }
-  
-  .example-card {
-    max-width: 200px;
-    margin-right: 33px;
-    margin-left:30px
-  }
+.example-card img {
+  width: 207px;
+  height: 149px;
+  border-radius: 68%;
+  margin-bottom: 10px;
+}
 
-  .example-card img{
-    width: 198px;
-    height: 198px;
-  }
-  
-  .example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
-  }
+mat-panel-title {
+  font-size: 26px;
+  font-weight: bold;
+  font-family: 'Lobster';
+  color: #f89827;
+}
 
-  mat-panel-title{
-    font-size: 20px;
-  }
+mat-panel-description {
+  font-size: 22px;
+  font-style: initial;
+  font-family: 'Dancing Script';
+  color: #df52c1;
+  font-weight: bolder;
+}
 
-  mat-panel-description{
-    font-style: italic;
-  }
 
-  mat-card-subtitle{
-    font-size: 15px;
-    font-weight: bold;
-    margin-left: 0px;
-    margin-bottom: 10px;
-  }
+mat-card-subtitle {
+  padding:0;
+  font-size: 27px;
+  margin-left: 10px;
+  margin-bottom: 11px;
+  color: #74fbff;
+  letter-spacing: 2px;
+  font-family: 'Righteous';
+}
+.food-Name{
+  font-family: 'Satisfy';
+  font-size:29px;
+}
 
-  .foodList{
-    display: flex;
-    flex-direction: row;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    
-  }
-  
-  .orderButton{
-    margin-top: 8px;
-    margin-right: 8px;
-  }
+.foodList {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin: 0;
+}
+
+.food-Price{
+  display: flex;
+  flex-direction: row;
+}
+.food-Price h2{
+  color: rgb(253 0 0);
+  font-size: 28px;
+  margin-top: 2px;
+  font-family: 'Roboto';
+}
+.food-Price p{
+  color: aliceblue;
+  font-family: 'Teko';
+  font-size: 32px;
+  margin-top: 19px;
+}
+
+.orderButton {
+  display:inline-block;
+  width: 100%;
+  margin: 8px;
+}
+
+.example-button-container{
+  margin-left: 30px;
+}
