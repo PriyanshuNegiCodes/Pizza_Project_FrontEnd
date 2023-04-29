@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginserviceService } from '../services/loginservice.service';
 import { AuthenticationserviceService } from '../services/authenticationservice.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class LoginComponent {
   loginForm:any|FormGroup;
 
-  constructor(private login: LoginserviceService, private authService:AuthenticationserviceService,private _snackBar: MatSnackBar) { }
+  constructor(private router:Router ,private login: LoginserviceService, private authService:AuthenticationserviceService,private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -32,23 +33,28 @@ export class LoginComponent {
       localStorage.setItem("name",this.responsedata.name);
       localStorage.setItem("address",this.responsedata.address);
       localStorage.setItem("phoneNumber", this.responsedata.phone);
-
-      console.log("_________________________________________")
-        console.log(localStorage.getItem("phoneNumber"))
-      console.log("_________________________________________")
-
-
-      if(localStorage.getItem("jwt")!=""){
-        this.authService.loggedIn();
-        this.openSnackBar("SuccessFully Logged In", "Ok")
-      }else{
-        this.authService.loggedOut();
-        this.openSnackBar("invalid login details", "Ok")
-      }
-
-    }, error=> alert(error))
     
+    }, error=> {
+
+      alert(error)
+      
+    })
+    this.currentStatus();
   }
+
+  currentStatus(){
+    if(localStorage.getItem("jwt")!=""){
+      this.authService.loggedIn();
+      this.openSnackBar("SuccessFully Logged In", "Ok")
+    }else {
+      this.authService.loggedOut();
+      this.openSnackBar("invalid login details", "Ok")
+      this.router.navigate(['/menuComponent']);
+
+    }
+  }
+
+
   logout(){
     localStorage.removeItem("jwt");
     localStorage.removeItem("email");
@@ -59,7 +65,6 @@ export class LoginComponent {
     this.authService.loggedOut();
     this.loginForm.reset();
     this.openSnackBar("SuccessFully Logged Out", "Ok")
-
   }
 
   openSnackBar(message: string, action: string) {

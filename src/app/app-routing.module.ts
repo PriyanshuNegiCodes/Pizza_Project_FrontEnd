@@ -10,7 +10,7 @@ const routes: Routes = [
 {path:'', redirectTo:'/loginComponent', pathMatch:'full'},
 {path: 'loginComponent', component:LoginComponent},
 {path: 'register', component:RegisterComponent},
-{path: 'menuComponent', component:MenuComponent},
+{path: 'menuComponent', component:MenuComponent, canActivate:[CanActivateGuard]},
 {path: 'order', component: OrderpageComponent}
 
 ];

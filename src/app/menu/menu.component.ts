@@ -49,23 +49,16 @@ export class MenuComponent implements OnInit {
   addFoodInformation(data:any){
     this.finalOrder.list.push(data);
     
-    console.log("---------------------------------------------")
-
     this.finalOrder.email = localStorage.getItem("email") || '';
     this.finalOrder.phoneNumber = parseInt(localStorage.getItem("phoneNumber") || '0'); 
     this.finalOrder.address = localStorage.getItem("address") || '';  
     
-    console.log(this.getRestaurantName)
-    console.log(this.getRestaurantAddress)
-
     this.finalOrder.restaurantName=this.getRestaurantName;
     this.finalOrder.restaurantAddress=this.getRestaurantAddress;
-    console.log("---------------------------------------------")
 
   }
 
   orderNow(){
-    //alert(JSON.stringify(this.finalOrder))
     this.routing.navigate(['/order'], { state: { finalOrder: this.finalOrder } });
   }
 }
