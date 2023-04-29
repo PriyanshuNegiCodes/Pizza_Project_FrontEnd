@@ -7,11 +7,13 @@ import { AuthenticationserviceService } from './authenticationservice.service';
   providedIn: 'root'
 })
 export class CanActivateGuard implements CanActivate {
-  constructor(private service: AuthenticationserviceService){}
+  constructor(private authService: AuthenticationserviceService) {}
+
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      alert(this.service.getCurrentStatus())
-    return this.service.getCurrentStatus();
+    state: RouterStateSnapshot
+  ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    alert(this.authService.getCurrentStatus());
+    return this.authService.getCurrentStatus();
   } 
 }
