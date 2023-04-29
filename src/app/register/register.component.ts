@@ -16,9 +16,10 @@ export class RegisterComponent {
     ) { }
 
     phonePattern = /^[7-9]\d{9}$/;
+    emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     registerForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
       phoneNumber: ['', [Validators.required, Validators.pattern(this.phonePattern)]],
       password: ['' ,[Validators.required]],
       Cpassword: ['', Validators.required],
@@ -27,7 +28,6 @@ export class RegisterComponent {
     }, {
       validators: [CustomValidators.passwordMatchValidator]
     });
-  
   
 
   // ________________Code toe get the validations from form build___________________________________________

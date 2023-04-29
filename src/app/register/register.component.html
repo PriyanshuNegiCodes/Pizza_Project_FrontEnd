@@ -6,8 +6,8 @@
       <form [formGroup]="registerForm" #formData="ngForm" (ngSubmit)="registerCustomer()">
         <mat-form-field>
           <input matInput placeholder="Email" formControlName="email">
-          <mat-error *ngIf="registerForm.get('email')?.hasError('required')">Email is required</mat-error>
-          <mat-error *ngIf="registerForm.get('email')?.hasError('email')">Please enter a valid email address</mat-error>
+          <mat-error *ngIf="getEmail?.hasError('required')">Email is required</mat-error>
+          <mat-error *ngIf="getEmail.hasError('pattern')">Please enter a valid email address</mat-error>
         </mat-form-field>
         
         <mat-form-field>
