@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { RegistrationserviceService } from '../services/registrationservice.service';
 import { CustomValidators } from '../services/CustomerValidators';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -9,7 +11,9 @@ import { CustomValidators } from '../services/CustomerValidators';
 })
 export class RegisterComponent {
  
-  constructor(private registration: RegistrationserviceService, private fb:FormBuilder) { }
+  constructor(private registration: RegistrationserviceService, private fb:FormBuilder
+    , private matSnackBar:MatSnackBar, private routing: Router
+    ) { }
 
   registerForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -63,5 +67,13 @@ export class RegisterComponent {
 
     }, error=> alert(error))
     this.registerForm.reset();
+
+    this.openSnackBar("Your Account Was Created Succesfully Kindly Login Using Credentials", "Ok");
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.matSnackBar.open(message, action);
+    this.routing.navigate(['/order']);
+
   }
 }
