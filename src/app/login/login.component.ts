@@ -13,6 +13,11 @@ import { AuthnticationService } from '../services/authntication.service';
 export class LoginComponent {
   loginForm:any|FormGroup;
 
+  currentUserName=localStorage.getItem("name");
+  currentUserEmail= localStorage.getItem("email");
+  currentUserAddress=localStorage.getItem("address");
+  currentUserPhoneNumber=localStorage.getItem("phoneNumber");
+
   constructor(private router:Router ,private login: LoginserviceService, private _snackBar: MatSnackBar, private authService: AuthnticationService) { }
 
   ngOnInit() {
@@ -46,11 +51,10 @@ export class LoginComponent {
     if(localStorage.getItem("jwt")!=""){
       this.authService.loggedIn();
       this.openSnackBar("SuccessFully Logged In", "Ok")
+      this.router.navigate(['/menuComponent']);
     }else {
       this.authService.loggedOut();
       this.openSnackBar("invalid login details", "Ok")
-      this.router.navigate(['/menuComponent']);
-
     }
   }
 

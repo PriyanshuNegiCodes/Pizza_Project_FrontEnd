@@ -1,4 +1,5 @@
-<div class="restaurant-data" *ngFor="let restaurantName of menuList; let i = index">
+<div class="bodyWallPaper">
+  <div class="restaurant-data" *ngFor="let restaurantName of menuList; let i = index">
   <mat-accordion (mouseleave)="leaveAlert()">
  
         <mat-expansion-panel 
@@ -46,4 +47,5 @@
   <!--  -->
         </mat-expansion-panel>
       </mat-accordion>
+</div>
 </div>
