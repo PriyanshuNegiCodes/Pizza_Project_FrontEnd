@@ -1,8 +1,13 @@
 .restaurant-data {
-  margin-top: 5%;
-  margin-bottom: 10%;
+  margin-top: 2%;
+  margin-bottom: -60px;
   display: flex;
   justify-content: center;
+  padding: 0px;
+}
+
+.mat-expansion-panel {
+  margin-bottom: 10px; /* or any other desired value */
 }
 
 .mat-expansion-panel {
@@ -42,7 +47,6 @@ mat-panel-description {
   color: #df52c1;
   font-weight: bolder;
 }
-
 
 mat-card-subtitle {
   padding:0;
@@ -92,3 +96,17 @@ mat-card-subtitle {
 .example-button-container{
   margin-left: 30px;
 }
+
+@media only screen and (max-width: 768px) {
+  .foodList {
+  flex-direction: column;
+  align-items: center;
+  }
+  .example-card {
+  width: 60vw;
+  margin-bottom: 20px;
+  }
+  mat-panel-title{
+    font-size: 25px;
+  }
+  }
