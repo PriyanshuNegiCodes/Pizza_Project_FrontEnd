@@ -8,7 +8,7 @@ export class LoginserviceService {
 
   constructor(private httpClient:HttpClient) {}
 
-  baseUrl:string ="http://localhost:5555/api/auth/v1/";
+  baseUrl:string ="http://localhost:9999/api/auth/v1/";
 
   loginUser(loginData:any){
     return this.httpClient.post(this.baseUrl+"login", loginData);

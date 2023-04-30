@@ -8,6 +8,6 @@ export class RegistrationserviceService {
   constructor(private httpClient:HttpClient) { }
 
   regsiterCustomer(userData:any){
-    return this.httpClient.post('http://localhost:5555/api/auth/v1/register', userData );
+    return this.httpClient.post('http://localhost:9999/api/auth/v1/register', userData );
   }
 }

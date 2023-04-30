@@ -25,6 +25,7 @@ import { MenuComponent } from './menu/menu.component';
 import { RegisterComponent } from './register/register.component';
 import { OrderpageComponent } from './orderpage/orderpage.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { OrderHistoryComponent } from './order-history/order-history.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MenuComponent,
     RegisterComponent,
     OrderpageComponent,
+    OrderHistoryComponent,
     
   ],
   imports: [
