@@ -45,7 +45,6 @@ export class LoginComponent {
       this.currentStatus();
     }, error=> {
 
-      alert(error)
       this.openSnackBar("There was error Login Try again", "Ok")  
     })
   }

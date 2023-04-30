@@ -47,19 +47,37 @@ export class MenuComponent implements OnInit {
   }
 
   addFoodInformation(data:any){
-    this.finalOrder.list.push(data);
+
+    let addedData=this.finalOrder.list.some(
+      item=>(
+        item.name === data.name &&
+        item.price === data.price &&
+        item.category === data.category
+      )
+    )
+
+    if(addedData){
+      this.openSnackBar("The item is already in the cart", "Ok")
+        }else{
+      this.finalOrder.list.push(data);
     
-    this.finalOrder.email = localStorage.getItem("email") || '';
-    this.finalOrder.phoneNumber = parseInt(localStorage.getItem("phoneNumber") || '0'); 
-    this.finalOrder.address = localStorage.getItem("address") || '';  
-    
-    this.finalOrder.restaurantName=this.getRestaurantName;
-    this.finalOrder.restaurantAddress=this.getRestaurantAddress;
+      this.finalOrder.email = localStorage.getItem("email") || '';
+      this.finalOrder.phoneNumber = parseInt(localStorage.getItem("phoneNumber") || '0'); 
+      this.finalOrder.address = localStorage.getItem("address") || '';  
+      
+      this.finalOrder.restaurantName=this.getRestaurantName;
+      this.finalOrder.restaurantAddress=this.getRestaurantAddress;
+    }
+
 
   }
 
-  orderNow(){
-    this.routing.navigate(['/order'], { state: { finalOrder: this.finalOrder } });
+  orderNow() {
+    if (this.finalOrder.list.length > 0) {
+      this.routing.navigate(['/order'], { state: { finalOrder: this.finalOrder } });
+    } else {
+      this.openSnackBar("Please add items to the cart before placing an order", "Ok");
+    }
   }
 
 
@@ -77,6 +95,15 @@ export class MenuComponent implements OnInit {
     
     onMouseLeave() {
     this.hoveredIndex = -1;
+    this.finalOrder= {
+      email: '',
+      phoneNumber: 0,
+      address: '',
+      restaurantName: '',
+      restaurantAddress: '',
+      list: [],
+      grandTotal: 0
+    }
     }
     
     isPanelOpen(index: number): boolean {
