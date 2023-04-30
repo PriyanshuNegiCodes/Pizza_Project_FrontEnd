@@ -21,6 +21,11 @@ export class LoginComponent {
   constructor(private router:Router ,private login: LoginserviceService, private _snackBar: MatSnackBar, private authService: AuthnticationService) { }
 
   ngOnInit() {
+
+    if (localStorage.getItem("jwt") == null) {
+      this.loggedIn = false;
+    }
+
   
     this.loginForm = new FormGroup({
       email: new FormControl('', Validators.required),
