@@ -4,7 +4,6 @@ import { LoginserviceService } from '../services/loginservice.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthnticationService } from '../services/authntication.service';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -53,7 +52,10 @@ export class LoginComponent {
       this.authService.loggedIn();
       this.openSnackBar("SuccessFully Logged In", "Ok")
       this.loggedIn=true;
-      this.router.navigate(['/LoginComponent']);
+
+      this.router.navigate(['/menuComponent']);
+
+
     }else {
       this.authService.loggedOut();
       this.openSnackBar("invalid login details", "Ok")
@@ -73,7 +75,6 @@ export class LoginComponent {
     this.openSnackBar("SuccessFully Logged Out", "Ok")
     this.loggedIn=false
   }
-
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action);
   }
