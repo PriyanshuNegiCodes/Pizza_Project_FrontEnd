@@ -20,15 +20,17 @@ export class LoginComponent {
 
   constructor(private router:Router ,private login: LoginserviceService, private _snackBar: MatSnackBar, private authService: AuthnticationService) { }
 
+
+  emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
   ngOnInit() {
 
     if (localStorage.getItem("jwt") == null) {
       this.loggedIn = false;
     }
 
-  
     this.loginForm = new FormGroup({
-      email: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.pattern(this.emailPattern)]),
       password: new FormControl('', Validators.required)
     });
   }
