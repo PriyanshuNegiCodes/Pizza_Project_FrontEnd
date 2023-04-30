@@ -12,6 +12,7 @@ import { AuthnticationService } from '../services/authntication.service';
 })
 export class LoginComponent {
   loginForm:any|FormGroup;
+  loggedIn=true;
 
   currentUserName=localStorage.getItem("name");
   currentUserEmail= localStorage.getItem("email");
@@ -21,6 +22,7 @@ export class LoginComponent {
   constructor(private router:Router ,private login: LoginserviceService, private _snackBar: MatSnackBar, private authService: AuthnticationService) { }
 
   ngOnInit() {
+  
     this.loginForm = new FormGroup({
       email: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required)
@@ -38,20 +40,20 @@ export class LoginComponent {
       localStorage.setItem("name",this.responsedata.name);
       localStorage.setItem("address",this.responsedata.address);
       localStorage.setItem("phoneNumber", this.responsedata.phone);
-    
+      this.currentStatus();
     }, error=> {
 
       alert(error)
       
     })
-    this.currentStatus();
   }
 
   currentStatus(){
     if(localStorage.getItem("jwt")!=""){
       this.authService.loggedIn();
       this.openSnackBar("SuccessFully Logged In", "Ok")
-      this.router.navigate(['/menuComponent']);
+      this.loggedIn=true;
+      this.router.navigate(['/LoginComponent']);
     }else {
       this.authService.loggedOut();
       this.openSnackBar("invalid login details", "Ok")
@@ -69,6 +71,7 @@ export class LoginComponent {
     this.authService.loggedOut();
     this.loginForm.reset();
     this.openSnackBar("SuccessFully Logged Out", "Ok")
+    this.loggedIn=false
   }
 
   openSnackBar(message: string, action: string) {
