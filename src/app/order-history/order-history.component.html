@@ -1,4 +1,67 @@
-<div *ngFor="let name of orderHistoryList">
-    <p>{{name.email}}</p>
-<p>{{name.name}}</p>
-</div>
+<table mat-table [dataSource]="orderHistoryList" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="OrderId">
+        <th mat-header-cell *matHeaderCellDef> Order Id </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+    
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Order Id </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+  
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> orderDateAndTime </th>
+      <td mat-cell *matCellDef="let element"> {{element.orderDateAndTime}} </td>
+    </ng-container>
+  
+   
+    <ng-container matColumnDef="weight">
+      <th mat-header-cell *matHeaderCellDef> Delivery Address </th>
+      <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+    </ng-container>
+  
+
+    <ng-container matColumnDef="symbol">
+      <th mat-header-cell *matHeaderCellDef> Restaurant Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.restaurantName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="orderItems">
+        <th mat-header-cell *matHeaderCellDef> Order Summary </th>
+        <td mat-cell *matCellDef="let element">
+<!-- ------------------------------------------------------------------------- -->
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                    </tr>
+                    </thead>
+                    <tbody class="foodDetails" *ngFor="let item of element.list">
+                   
+                        <tr>
+                        <td>{{ item.name }}</td>
+                        <td> <span>$</span>{{ item.price }}</td>
+                        <td>{{ item.quantity }}</td>
+                        </tr>
+                    
+                    </tbody>
+                </table>
+
+
+<!-- ------------------------------------------------------------------------- -->
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="total">
+        <th mat-header-cell *matHeaderCellDef> Grand Total </th>
+        <td mat-cell *matCellDef="let element"><span>$</span> {{element.grandTotal}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+

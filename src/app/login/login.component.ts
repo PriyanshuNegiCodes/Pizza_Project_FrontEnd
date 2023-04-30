@@ -31,8 +31,6 @@ export class LoginComponent {
   responsedata:any;
   loginCustomer() {
     this.login.loginUser(this.loginForm.value).subscribe( response=>{
-
-      console.log(response);
       this.responsedata=response;
       localStorage.setItem("jwt", this.responsedata.Token);
       localStorage.setItem("email",this.responsedata.email);
@@ -43,7 +41,7 @@ export class LoginComponent {
     }, error=> {
 
       alert(error)
-      
+      this.openSnackBar("There was error Login Try again", "Ok")  
     })
   }
 

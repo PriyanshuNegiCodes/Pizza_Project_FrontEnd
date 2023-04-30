@@ -9,6 +9,8 @@ import {OrderHistory} from '../../assets/OrderHistory'
 })
 export class OrderHistoryComponent implements OnInit {
   orderHistoryList:any;
+  
+  displayedColumns: string[] = ['OrderId', 'email', 'name', 'weight', 'symbol', 'orderItems', 'total'];
 
   constructor(private orderService:OrderHistoryService){}
 

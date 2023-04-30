@@ -26,6 +26,7 @@ import { RegisterComponent } from './register/register.component';
 import { OrderpageComponent } from './orderpage/orderpage.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { OrderHistoryComponent } from './order-history/order-history.component';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,6 @@ import { OrderHistoryComponent } from './order-history/order-history.component';
     RegisterComponent,
     OrderpageComponent,
     OrderHistoryComponent,
-    
   ],
   imports: [
     BrowserModule,
@@ -56,7 +56,8 @@ import { OrderHistoryComponent } from './order-history/order-history.component';
     ReactiveFormsModule,
     HttpClientModule,
     MatExpansionModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTableModule
 
   ],
   providers: [],

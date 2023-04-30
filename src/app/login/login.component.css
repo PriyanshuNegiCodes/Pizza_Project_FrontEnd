@@ -58,3 +58,9 @@ span{
   button{
     margin-top: 12px;
   }
+
+  .logout-Button{
+    display:inline-block;
+    width: 70%;
+    margin-left: 15%;
+  }

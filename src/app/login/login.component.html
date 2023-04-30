@@ -21,7 +21,7 @@
   </mat-card-header>
 </mat-card>
 
-<mat-card class="loginPanel">
+<mat-card *ngIf="!loggedIn" class="loginPanel">
   <mat-card-header>
     <mat-card-title>Login</mat-card-title>
   </mat-card-header>
@@ -34,7 +34,8 @@
         <input matInput type="password" placeholder="Password" formControlName="password">
       </mat-form-field>
       <button mat-raised-button color="accent" type="submit">Login</button>
-      <button mat-raised-button color="warn" type="button" (click)="logout()" >Logout</button>
+
     </form>
   </mat-card-content>
 </mat-card>
+<button class="logout-Button" *ngIf="loggedIn" mat-raised-button color="warn" type="button" (click)="logout()" >Logout</button>

@@ -7,6 +7,7 @@ import { OrderpageComponent } from './orderpage/orderpage.component';
 import { CanActivateGuard } from './services/can-activate.guard';
 import { OrderHistoryComponent } from './order-history/order-history.component';
 
+
 const routes: Routes = [
 {path:'', redirectTo:'/loginComponent', pathMatch:'full'},
 {path: 'loginComponent', component:LoginComponent},
