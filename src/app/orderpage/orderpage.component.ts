@@ -22,6 +22,8 @@ export class OrderpageComponent implements OnInit{
     grandTotal: 0
   }
 
+  numbers: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
   constructor(private route: ActivatedRoute, private billing:FinalBillingService, private _snackBar: MatSnackBar, private routing: Router) { }
 
   ngOnInit() {
@@ -33,9 +35,9 @@ export class OrderpageComponent implements OnInit{
     this.finalBill.address = state.finalOrder.address;
     this.finalBill.restaurantName = state.finalOrder.restaurantName;
     this.finalBill.restaurantAddress = state.finalOrder.restaurantAddress;
-    console.log(state.finalOrder.list[0].category)
-    console.log(state.finalOrder.list[0].price)
-    console.log(state.finalOrder.list[0].name)
+  
+
+
     for(let i=0; i<state.finalOrder.list.length; i++){
       const foodItem: FoodList = {
         category: state.finalOrder.list[i].category,
@@ -53,9 +55,19 @@ export class OrderpageComponent implements OnInit{
   calculateGrandTotal(finalBill:any) {
    return this.finalBill.grandTotal = this.finalBill.list.reduce((total, item) => total + (item.price * item.quantity), 0);
   } 
+
+  checkOrderButton(){
+    if(this.finalBill.grandTotal<100){
+    //  this.openSnackBar("Order Value must be more than $100", "Ok")
+      return false;
+
+    }else{
+      return true;
+    }
+  }
   
   placeOrder(){
-    console.log(this.finalBill);
+
     this.billing.addBillingDetails(this.finalBill).subscribe(
       response=>{
         console.log(response);
@@ -66,10 +78,11 @@ export class OrderpageComponent implements OnInit{
 
     );
     this.openSnackBar("Order Place Successfully", "Ok")
+    this.finalBill.list=[];
+    this.routing.navigate(['/menuComponent'] );
   }
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action);
-    this.finalBill.list=[];
-    this.routing.navigate(['/menuComponent'] );
+
   }
 }

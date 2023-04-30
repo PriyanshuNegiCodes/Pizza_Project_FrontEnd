@@ -15,3 +15,10 @@
   top: 0;
   z-index: 1;
 }
+
+.links{
+  font-size: 26px;
+  font-weight: bold;
+  font-family: 'Lobster';
+  color: #f89827;
+}
