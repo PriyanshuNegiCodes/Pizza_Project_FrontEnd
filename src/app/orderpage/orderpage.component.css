@@ -25,7 +25,7 @@ mat-card{
   
   .food-item span {
     display: inline-block;
-    width: 22%;
+    width: 21%;
     font-size: 14px;
     font-weight: 500;
    
@@ -44,9 +44,11 @@ mat-card{
   .grandTotal{
     display: inline-block;
     width: 100%;
-    text-align: center;
+    text-align:end;
+    align-items: end;
   }
   .grandTotal button{
     padding: 8px;
     margin:12px;
   }
+

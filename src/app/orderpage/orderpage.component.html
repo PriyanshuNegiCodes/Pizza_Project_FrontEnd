@@ -14,7 +14,12 @@
         <span>{{ data.category }}</span>
         <span>{{ data.name }}</span>
         <span>{{ data.price }}</span>
-        <input type="number" [(ngModel)]="data.quantity" min="1">
+        <!-- <input type="number" [(ngModel)]="data.quantity" min="1"> -->
+          <!-- <label>Select a number:</label> -->
+          <select [(ngModel)]="data.quantity">
+            <option *ngFor="let num of numbers" [value]="num">{{ num }}</option>
+          </select>
+
         <span class="food-item-total">{{ total(data) }}</span>
       </div>
       <div class="grandTotal">

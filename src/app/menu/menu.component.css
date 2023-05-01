@@ -2,7 +2,7 @@
 
 .restaurant-data {
   margin-top: 2%;
-  margin-bottom: -80px;
+  margin-bottom: -30px;
   display: flex;
   justify-content: center;
   padding: 0px;
@@ -112,3 +112,9 @@ mat-card-subtitle {
     font-size: 25px;
   }
   }
+
+.nullBlock{
+  border: 2px solid;
+  width: 200px;
+  height: 200px;
+}
