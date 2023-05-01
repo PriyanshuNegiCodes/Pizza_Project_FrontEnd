@@ -12,8 +12,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class MenuComponent implements OnInit {
 
-  panelOpenState = false;
-
   menuList:Orders|any;
 
   finalOrder: FinalOrder = {
@@ -82,7 +80,7 @@ export class MenuComponent implements OnInit {
 
 
   // --------------------Code to order from one restaurant only---------------------------
-  
+  panelOpenState = false;
   hoveredIndex = -1;
 
   leaveAlert(){

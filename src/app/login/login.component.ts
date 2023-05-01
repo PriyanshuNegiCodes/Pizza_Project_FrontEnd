@@ -26,6 +26,9 @@ export class LoginComponent {
   ngOnInit() {
 
     if (localStorage.getItem("jwt") == null) {
+
+    // ----Setting the view status again for information panel
+
       this.loggedIn = false;
     }
 
@@ -77,6 +80,8 @@ export class LoginComponent {
     this.authService.loggedOut();
     this.loginForm.reset();
     this.openSnackBar("SuccessFully Logged Out", "Ok")
+
+    // ----Setting the view status again for information panel
     this.loggedIn=false
   }
   openSnackBar(message: string, action: string) {
