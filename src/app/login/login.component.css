@@ -64,3 +64,7 @@ span{
     width: 70%;
     margin-left: 15%;
   }
+
+  .loginFormErrors{
+    color: #d94621;
+  }

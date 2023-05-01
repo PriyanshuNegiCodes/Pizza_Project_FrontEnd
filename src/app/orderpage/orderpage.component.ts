@@ -52,7 +52,7 @@ export class OrderpageComponent implements OnInit{
   total(foodItem: FoodList): number {
     return foodItem.price * foodItem.quantity;
   }
-  calculateGrandTotal(finalBill:any) {
+  calculateGrandTotal() {
    return this.finalBill.grandTotal = this.finalBill.list.reduce((total, item) => total + (item.price * item.quantity), 0);
   } 
 

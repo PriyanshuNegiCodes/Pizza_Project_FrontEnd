@@ -19,7 +19,7 @@
       </div>
       <div class="grandTotal">
         <button  mat-raised-button color="warn"  [disabled]="!checkOrderButton()"  (click)="placeOrder()"  > <span style="font-size: 16px; 
-            font-weight: 600;">Place Order=> Grand Total: $</span> {{calculateGrandTotal(finalBill.grandTotal)}}</button>
+            font-weight: 600;">Place Order=> Grand Total: $</span> {{calculateGrandTotal()}}</button>
       </div>
     </mat-card-content>
 </mat-card>
