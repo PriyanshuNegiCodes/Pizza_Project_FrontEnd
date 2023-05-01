@@ -12,6 +12,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class MenuComponent implements OnInit {
 
+  currentUserName=localStorage.getItem("name");
+  currentUserEmail= localStorage.getItem("email");
+  currentUserAddress=localStorage.getItem("address");
+  currentUserPhoneNumber=localStorage.getItem("phoneNumber");
+
   menuList:Orders|any;
 
   finalOrder: FinalOrder = {

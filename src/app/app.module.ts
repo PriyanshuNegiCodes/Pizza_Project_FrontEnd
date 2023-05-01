@@ -27,6 +27,7 @@ import { OrderpageComponent } from './orderpage/orderpage.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { OrderHistoryComponent } from './order-history/order-history.component';
 import {MatTableModule} from '@angular/material/table';
+import { PageNoteFoundComponent } from './page-note-found/page-note-found.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import {MatTableModule} from '@angular/material/table';
     RegisterComponent,
     OrderpageComponent,
     OrderHistoryComponent,
+    PageNoteFoundComponent,
   ],
   imports: [
     BrowserModule,

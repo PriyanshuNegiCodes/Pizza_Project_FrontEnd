@@ -1,5 +1,27 @@
-<div class="bodyWallPaper">
-  <div class="restaurant-data" *ngFor="let restaurantName of menuList; let i = index">
+<mat-card class="userInformation">
+  <mat-card-header class="userInformationHeader">
+    <mat-card-title>
+      <span>Welcome: </span>
+      {{currentUserName}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-header class="userInformationHeader">
+    <mat-card-title>
+      <span>Email: </span>
+      {{currentUserEmail}}</mat-card-title>
+  </mat-card-header >
+  <mat-card-header class="userInformationHeader" >
+    <mat-card-title>
+      <span>Phone Number: </span>
+      {{currentUserPhoneNumber}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-header class="userInformationHeader">
+    <mat-card-title>
+      <span>Address: </span>
+      {{currentUserAddress}}</mat-card-title>
+  </mat-card-header>
+</mat-card>
+
+<div class="restaurant-data" *ngFor="let restaurantName of menuList; let i = index">
   <mat-accordion (mouseleave)="leaveAlert()">
  
         <mat-expansion-panel 
@@ -50,5 +72,4 @@
 </div>
 <div class="nullBlock">
 
-</div>
 </div>
